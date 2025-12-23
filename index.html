@@ -1,427 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasfia Sharmin | Software Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-      /* --- Clean Variables --- */
-      :root {
-        --bg: #0f172a;
-        --surface: #1e293b;
-        --primary: #38bdf8;
-        --text: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: #334155;
-      }
-
-      /* --- Simple Reset --- */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* --- Navigation --- */
-      nav {
-        background: rgba(15, 23, 42, 0.9);
-        border-bottom: 1px solid var(--border);
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      nav .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      /* --- Logo Animation --- */
-      .logo {
-        display: flex;
-        text-decoration: none;
-        color: var(--text);
-        font-weight: 800;
-        font-size: 1.1rem;
-        overflow: hidden;
-        white-space: nowrap;
-        cursor: pointer;
-      }
-      .logo .name-part {
-        display: inline-block;
-        max-width: 0;
-        opacity: 0;
-        transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-          opacity 0.3s ease;
-        color: var(--primary);
-      }
-      .logo:hover .name-part {
-        max-width: 200px;
-        opacity: 1;
-      }
-      .logo .initial {
-        color: var(--text);
-      }
-
-      .nav-links a {
-        color: var(--text-muted);
-        text-decoration: none;
-        margin-left: 20px;
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      /* --- Header --- */
-      header {
-        padding: 100px 0 60px;
-      }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-      }
-      .subtitle {
-        font-size: 1.25rem;
-        color: var(--text-muted);
-        margin-bottom: 30px;
-      }
-      .btn {
-        display: inline-block;
-        background: var(--primary);
-        color: #000;
-        padding: 10px 24px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: 700;
-      }
-
-      /* --- Sections --- */
-      section {
-        padding: 80px 0;
-        border-bottom: 1px solid var(--border);
-      }
-      h2 {
-        font-size: 1.75rem;
-        margin-bottom: 40px;
-        color: var(--primary);
-      }
-
-      .item {
-        margin-bottom: 40px;
-      }
-      .item-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-      }
-      .item-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-      }
-      .item-sub {
-        color: var(--primary);
-        font-weight: 600;
-        margin: 5px 0;
-      }
-      .date {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-
-      ul {
-        list-style: none;
-        margin-top: 10px;
-      }
-      li {
-        margin-bottom: 8px;
-        position: relative;
-        padding-left: 20px;
-        color: var(--text-muted);
-      }
-      li::before {
-        content: "•";
-        color: var(--primary);
-        position: absolute;
-        left: 0;
-      }
-
-      /* --- Projects Grid --- */
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .card {
-        background: var(--surface);
-        padding: 25px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .card h3 {
-        margin-bottom: 10px;
-      }
-      .card p {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-      }
-
-      .demo-link {
-        color: var(--primary);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        transition: gap 0.2s;
-      }
-      .demo-link:hover {
-        gap: 10px;
-        text-decoration: underline;
-      }
-
-      /* --- Skills --- */
-      .skills-group {
-        margin-bottom: 20px;
-      }
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-      }
-      .tag {
-        background: var(--border);
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 0.85rem;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          grid-template-columns: 1fr;
+        /* --- Clean Variables --- */
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --primary: #38bdf8;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
         }
-        .item-header {
-          flex-direction: column;
+
+        /* --- Simple Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
         }
-        h1 {
-          font-size: 2.2rem;
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* --- Logo Animation --- */
+        .logo {
+            display: flex;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 800;
+            font-size: 1.1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .logo .name-part {
+            display: inline-block;
+            max-width: 0;
+            opacity: 0;
+            transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            color: var(--primary);
         }
         .logo:hover .name-part {
-          max-width: 0;
-          opacity: 0;
+            max-width: 200px; 
+            opacity: 1;
         }
-      }
+        .logo .initial {
+            color: var(--text);
+        }
+
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- Header --- */
+        header { padding: 100px 0 60px; }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        .subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 30px; }
+        
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .btn { 
+            display: inline-block; 
+            background: var(--primary); 
+            color: #000; 
+            padding: 10px 24px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 700; 
+        }
+
+        .icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: color 0.2s, transform 0.2s;
+        }
+        .icon-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .icon-link svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            display: block;
+        }
+
+        /* --- Sections --- */
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.75rem; margin-bottom: 40px; color: var(--primary); }
+
+        .item { margin-bottom: 40px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-title { font-size: 1.25rem; font-weight: 700; }
+        .item-sub { color: var(--primary); font-weight: 600; margin: 5px 0; }
+        .date { color: var(--text-muted); font-size: 0.9rem; }
+        
+        ul { list-style: none; margin-top: 10px; }
+        li { margin-bottom: 8px; position: relative; padding-left: 20px; color: var(--text-muted); }
+        li::before { content: "•"; color: var(--primary); position: absolute; left: 0; }
+
+        /* --- Projects Grid --- */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { 
+            background: var(--surface); 
+            padding: 25px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border); 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card h3 { margin-bottom: 10px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+        
+        .demo-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+        }
+        .demo-link:hover {
+            gap: 10px;
+            text-decoration: underline;
+        }
+
+        /* --- Skills --- */
+        .skills-group { margin-bottom: 20px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .tag { background: var(--border); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .item-header { flex-direction: column; }
+            h1 { font-size: 2.2rem; }
+            .logo:hover .name-part { max-width: 0; opacity: 0; } 
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <nav>
-      <div class="container">
-        <a href="#" class="logo">
-          <span class="initial">T</span><span class="name-part">asfia</span>
-          <span class="initial" style="margin-left: 2px">S</span
-          ><span class="name-part">harmin</span>
-        </a>
-        <div class="nav-links">
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="initial">T</span><span class="name-part">asfia</span>
+                <span class="initial" style="margin-left: 2px;">S</span><span class="name-part">harmin</span>
+            </a>
+            <div class="nav-links">
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container">
-      <header>
+        <header>
             <h1>Tasfia Sharmin</h1>
             <p class="subtitle">Software Engineer specializing in Frontend & QA Automation.</p>
             <div class="contact-links">
                 <a href="mailto:tasfia.sharmin1994@gmail.com" class="btn">Get In Touch</a>
+                
+                <!-- Social Icons with fixed sizes -->
                 <a href="https://github.com/tasfia-sharmin" target="_blank" class="icon-link" title="GitHub">
-                    <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/borsha06/" target="_blank" class="icon-link" title="LinkedIn">
-                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
             </div>
         </header>
 
-      <section id="education">
-        <h2>Education</h2>
-        <div class="item">
-          <div class="item-header">
-            <span class="item-title"
-              >MSc in International Software Systems Science</span
-            >
-            <span class="date">2021 — 2024</span>
-          </div>
-          <div class="item-sub">
-            Otto-Friedrich-Universität Bamberg, Germany
-          </div>
-          <p>
-            Focus on distributed systems and cloud computing. Thesis:
-            Model-based Pre-warming to Mitigate Cold Starts in Serverless
-            Functions.
-          </p>
-        </div>
-        <div class="item">
-          <div class="item-header">
-            <span class="item-title"
-              >BSc in Computer Science and Engineering</span
-            >
-            <span class="date">2013 — 2017</span>
-          </div>
-          <div class="item-sub">HSTU, Bangladesh</div>
-          <p>
-            Dean's List recipient. Thesis focused on Heart Disease Prediction
-            using Feature Selection.
-          </p>
-        </div>
-      </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">MSc in International Software Systems Science</span>
+                    <span class="date">2021 — 2024</span>
+                </div>
+                <div class="item-sub">Otto-Friedrich-Universität Bamberg, Germany</div>
+                <p>Focus on distributed systems and cloud computing. Thesis: Model-based Pre-warming to Mitigate Cold Starts in Serverless Functions.</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">BSc in Computer Science and Engineering</span>
+                    <span class="date">2013 — 2017</span>
+                </div>
+                <div class="item-sub">HSTU, Bangladesh</div>
+                <p>Dean's List recipient. Thesis focused on Heart Disease Prediction using Feature Selection.</p>
+            </div>
+        </section>
 
-      <section id="experience">
-        <h2>Experience</h2>
-        <div class="item">
-          <div class="item-header">
-            <span class="item-title">Frontend Developer</span>
-            <span class="date">2022 — 2023</span>
-          </div>
-          <div class="item-sub">Digital.Wolff, Plötz & Co · Berlin</div>
-          <ul>
-            <li>
-              Built responsive Vue.js applications within an Agile environment.
-            </li>
-            <li>
-              Maintained reliability through structured unit testing and
-              debugging.
-            </li>
-            <li>
-              Collaborated with designers to implement pixel-perfect interfaces.
-            </li>
-          </ul>
-        </div>
-        <div class="item">
-          <div class="item-header">
-            <span class="item-title">Software Associate, SQA</span>
-            <span class="date">2019 — 2020</span>
-          </div>
-          <div class="item-sub">SSL Wireless · Dhaka</div>
-          <ul>
-            <li>
-              Developed automated test suites using Selenium to ensure system
-              integrity.
-            </li>
-            <li>Managed end-to-end bug tracking and documentation in JIRA.</li>
-          </ul>
-        </div>
-        <div class="item">
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Frontend Developer</span>
+                    <span class="date">2022 — 2023</span>
+                </div>
+                <div class="item-sub">Digital.Wolff, Plötz & Co · Berlin</div>
+                <ul>
+                    <li>Built responsive Vue.js applications within an Agile environment.</li>
+                    <li>Maintained software reliability by implementing structured unit testing and debugging.</li>
+                    <li>Translated design mockups into high-quality code, ensuring cross-browser compatibility.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Associate, SQA</span>
+                    <span class="date">2019 — 2020</span>
+                </div>
+                <div class="item-sub">SSL Wireless · Dhaka</div>
+                <ul>
+                    <li>Executed comprehensive Quality Assurance using manual and automated testing.</li>
+                    <li>Developed automated test suites using Selenium to ensure system integrity.</li>
+                    <li>Managed end-to-end bug tracking and documentation in JIRA.</li>
+                </ul>
+            </div>
+            <div class="item">
                 <div class="item-header">
                     <span class="item-title">Junior Software Engineer</span>
                     <span class="date">2018 — 2019</span>
                 </div>
                 <div class="item-sub">IT Service Dynamics · Bangladesh</div>
                 <ul>
-                    <li>Developed and optimized web interfaces using Vue.js and Vuex.</li>
+                    <li>Developed and optimized responsive web interfaces using Vue.js and Vuex.</li>
                     <li>Performed end-to-end testing and technical troubleshooting for end-users.</li>
                 </ul>
             </div>
-      </section>
+        </section>
 
-      <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="grid">
-          <div class="card">
-            <div>
-              <h3>Serverless Optimizer</h3>
-              <p>
-                Research project implementing model-based pre-warming to reduce
-                latency in FaaS (Function-as-a-Service) environments.
-              </p>
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>Serverless Optimizer</h3>
+                        <p>Research project implementing model-based pre-warming to reduce latency in FaaS (Function-as-a-Service) environments.</p>
+                    </div>
+                    <a href="https://github.com/tasfia-sharmin" target="_blank" class="demo-link">View Demo &rarr;</a>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Heart Disease Predictor</h3>
+                        <p>Machine learning application that uses feature selection algorithms to predict cardiac health risks with high accuracy.</p>
+                    </div>
+                    <a href="https://github.com/tasfia-sharmin" target="_blank" class="demo-link">View Demo &rarr;</a>
+                </div>
             </div>
-            <a
-              href="https://github.com/borsha06"
-              target="_blank"
-              class="demo-link"
-              >View Demo &rarr;</a
-            >
-          </div>
-          <div class="card">
-            <div>
-              <h3>Heart Disease Predictor</h3>
-              <p>
-                Machine learning application that uses feature selection
-                algorithms to predict cardiac health risks with high accuracy.
-              </p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-group">
+                <strong>Languages:</strong>
+                <div class="skill-tags">
+                    <span class="tag">JavaScript</span> <span class="tag">Java</span> <span class="tag">HTML/CSS</span>
+                </div>
             </div>
-            <a
-              href="https://github.com/borsha06"
-              target="_blank"
-              class="demo-link"
-              >View Demo &rarr;</a
-            >
-          </div>
-        </div>
-      </section>
+            <div class="skills-group">
+                <strong>Tools:</strong>
+                <div class="skill-tags">
+                    <span class="tag">Vue.js</span> <span class="tag">Selenium</span> <span class="tag">Docker</span> <span class="tag">Git</span> <span class="tag">Jira</span>
+                </div>
+            </div>
+        </section>
 
-      <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-group">
-          <strong>Languages:</strong>
-          <div class="skill-tags">
-            <span class="tag">JavaScript</span> <span class="tag">Java</span>
-            <span class="tag">HTML/CSS</span>
-          </div>
-        </div>
-        <div class="skills-group">
-          <strong>Tools:</strong>
-          <div class="skill-tags">
-            <span class="tag">Vue.js</span> <span class="tag">Selenium</span>
-            <span class="tag">Docker</span> <span class="tag">Git</span>
-            <span class="tag">Jira</span>
-          </div>
-        </div>
-      </section>
-
-      <footer
-        style="
-          padding: 40px 0;
-          text-align: center;
-          color: var(--text-muted);
-          font-size: 0.9rem;
-        "
-      >
-        &copy; 2025 Tasfia Sharmin
-      </footer>
+        <footer style="padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+            &copy; 2024 Tasfia Sharmin
+        </footer>
     </div>
-  </body>
+
+</body>
 </html>
-
-
